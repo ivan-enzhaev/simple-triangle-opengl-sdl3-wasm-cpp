@@ -36,6 +36,10 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
     if (!SDL_Init(SDL_INIT_VIDEO))
         return SDL_APP_FAILURE;
 
+    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1); // Enable MULTISAMPLE
+    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 2); // can be 2, 4, 8 or 16
+    SDL_GL_SetAttribute(SDL_GL_ALPHA_SIZE, 0);
+
     // WebGL 2 requires GLES 3.0 context
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_ES);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
